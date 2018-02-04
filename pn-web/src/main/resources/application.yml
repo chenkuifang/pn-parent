@@ -3,3 +3,9 @@ server:
 spring:
   application:
     name: pn-web
+feign:
+  hystrix:
+    enabled: true
+    
+#feign.hystrix.enabled=true 这个最好都加上，因为有些版本默认是关闭的
+    
