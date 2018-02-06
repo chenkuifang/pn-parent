@@ -15,6 +15,7 @@
 		<module>pn-order</module>
 		<module>pn-web</module>
 		<module>pn-hystrix-dashboard</module>
+		<module>pn-gateway-zuul</module>
 	</modules>
 
 	<name>pn-parent</name>

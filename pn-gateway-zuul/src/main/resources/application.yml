@@ -1,0 +1,20 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: gateway-zuul
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    healthcheck:
+      enabled: true
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+    
+zuul:
+  routes:
+    pn-user:
+      path: /user/**
+      serviceId: pn-user-service
