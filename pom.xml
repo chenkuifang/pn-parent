@@ -14,6 +14,7 @@
 		<module>pn-goods</module>
 		<module>pn-order</module>
 		<module>pn-web</module>
+		<module>pn-hystrix-dashboard</module>
 	</modules>
 
 	<name>pn-parent</name>

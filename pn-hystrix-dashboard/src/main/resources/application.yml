@@ -1,0 +1,11 @@
+server:
+  port: 8083
+spring:
+  application:
+    name: pn-hystrix-dashboard
+feign:
+  hystrix:
+    enabled: true
+    
+#feign.hystrix.enabled=true 这个最好都加上，因为有些版本默认是关闭的
+    
