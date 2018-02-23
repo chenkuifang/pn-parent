@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * 控制器
+ *
+ * @author QuiFar
  */
 @RestController
 public class IndexController {

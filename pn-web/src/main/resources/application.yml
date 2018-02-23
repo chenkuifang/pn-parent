@@ -8,4 +8,8 @@ feign:
     enabled: true
     
 #feign.hystrix.enabled=true 这个最好都加上，因为有些版本默认是关闭的
-    
+
+#feign 日志
+logging:
+  level:
+    com.example.user.feign: DEBUG

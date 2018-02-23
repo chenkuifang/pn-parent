@@ -6,6 +6,7 @@ import com.example.user.feign.UserClient;
 import org.springframework.stereotype.Component;
 
 /**
+ * Fallback 类为了出现异常是返回默认类
  * 回退类FeignClientFallback需实现Feign Client接口
  * FeignClientFallback也可以是public class，没有区别
  *

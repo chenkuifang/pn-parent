@@ -8,10 +8,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.example.user.entity.User;
 import com.example.user.feign.fallback.UserClientFallback;
 
+/**
+ * user 服务类
+ *
+ * @author QuiFar
+ */
+
 @FeignClient(name = "pn-user", fallback = UserClientFallback.class)
 public interface UserClient {
 
-    //@GetMapping("/get-user/{id}")
-    @RequestMapping(value = "/get-user/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
     User getUser(@PathVariable("id") Integer id);
 }
