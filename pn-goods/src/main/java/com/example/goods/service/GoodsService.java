@@ -1,7 +1,6 @@
 package com.example.goods.service;
 
 import com.example.goods.entity.Goods;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -12,7 +11,6 @@ import java.util.Map;
  * @author QuiFar
  * @version V1.0
  **/
-@Service
 public interface GoodsService {
 
     /**
@@ -53,7 +51,7 @@ public interface GoodsService {
      * @param goods 需要更新的对象
      * @return
      */
-    Integer update(Goods goods);
+    int update(Goods goods);
 
     /**
      * 根据条件获取列表

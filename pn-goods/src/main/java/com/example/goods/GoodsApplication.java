@@ -1,14 +1,18 @@
-package com.example.user;
+package com.example.goods;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
+/**
+ * @author QuiFar
+ * @version V1.0
+ **/
 @SpringBootApplication
 @EnableEurekaClient
-public class UserApplication {
+public class GoodsApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(UserApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(GoodsApplication.class, args);
+    }
 }
