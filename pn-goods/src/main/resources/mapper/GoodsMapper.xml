@@ -1,0 +1,101 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.goods.mapper.GoodsMapper">
+	<resultMap type="Goods" id="goodsMap">
+		<id property="id" column="id" jdbcType="NUMERIC"/>
+		<result property="goodsNum" column="goods_num" jdbcType="VARCHAR"/>
+		<result property="goodsName" column="goods_name" jdbcType="VARCHAR"/>
+		<result property="salePrice" column="sale_price" jdbcType="NUMERIC"/>
+		<result property="discountPrice" column="discount_price" jdbcType="NUMERIC"/>
+		<result property="stock" column="stock" jdbcType="NUMERIC"/>
+		<result property="saleCount" column="sale_count" jdbcType="NUMERIC"/>
+		<result property="status" column="status" jdbcType="NUMERIC"/>
+	</resultMap>
+
+	<sql id="columns">
+		a.id,a.goods_num,a.goods_name,a.sale_price,
+		a.discount_price,a.stock,a.sale_count,a.status
+	</sql>
+
+	<select id="get" resultMap="goodsMap" parameterType="java.lang.Integer">
+		select
+			<include refid="columns" />
+		from pn_goods a
+		where a.id = #{id} and a.status &lt; 64
+	</select>
+
+	<select id="list" resultMap="goodsMap" parameterType="java.util.Map">
+		select
+			<include refid="columns" />
+		from pn_goods a
+		where a.status &lt; 64
+		order by a.id desc
+	</select>
+	
+	<select id="listPage" resultMap="goodsMap" parameterType="java.util.Map">
+		select <include refid="columns"/> 
+		from pn_goods a
+		where a.status &lt; 64
+		<choose>
+			<when test="orderSql!=null">
+                order by ${orderSql}
+			</when>
+			<otherwise>
+                order by a.id
+			</otherwise>
+		</choose>
+		limit ${offset},${limit}
+	</select>
+	
+	<select id="countPage" parameterType="java.util.Map" resultType="java.lang.Integer">
+		select count(1)
+		from pn_goods a
+		where a.status &lt; 64
+	</select>
+
+	<insert id="add" parameterType="Goods">
+		insert into pn_goods
+			(id,goods_num,goods_name,sale_price,discount_price,stock,sale_count,status)
+		values (
+			#{id}, #{goodsNum,}, #{goodsName}, #{salePrice}, #{discountPrice},#{stock}, #{saleCount})
+	</insert>
+
+	<update id="update" parameterType="Goods">
+		update pn_goods
+		<trim prefix="set" suffixOverrides=",">
+			<if test="goodsNum!=null">
+				goods_num=#{goodsNum,jdbcType=VARCHAR},
+			</if>
+			<if test="goodsName!=null">
+				goods_name=#{goodsName,jdbcType=VARCHAR},
+			</if>
+			<if test="salePrice!=null">
+				sale_price=#{salePrice,jdbcType=NUMERIC},
+			</if>
+			<if test="discountPrice!=null">
+				discount_price=#{discountPrice,jdbcType=NUMERIC},
+			</if>
+			<if test="stock!=null">
+				stock=#{stock,jdbcType=NUMERIC},
+			</if>
+			<if test="saleCount!=null">
+				sale_count=#{sale_count,jdbcType=NUMERIC},
+			</if>
+			<if test="status!=null">
+				status=#{status,jdbcType=NUMERIC},
+			</if>
+		</trim>
+		where id=#{id}
+	</update>
+
+	<delete id="remove" parameterType="java.lang.Integer">
+		update pn_goods set status = status + 64 where id = #{id}
+	</delete>
+	
+	<delete id="removeBatch" parameterType="java.lang.String">
+		update pn_goods set status = status + 64
+		where id in
+		 <foreach item="item" collection="array" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+	</delete>
+</mapper>
