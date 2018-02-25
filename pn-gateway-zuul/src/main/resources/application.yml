@@ -15,6 +15,9 @@ eureka:
     
 zuul:
   routes:
-    pn-user:
+    user:
       path: /user/**
-      serviceId: pn-user-service
+      serviceId: pn-user
+    goods:
+      path: /goods/**
+      serviceId: pn-goods
