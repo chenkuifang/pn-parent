@@ -12,12 +12,21 @@ eureka:
   instance:
     prefer-ip-address: true
     instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+
+#如果不设置该属性，访问zuul的 /routes时返回401；如果不设置可添加spring security 依赖即可
+management:
+  security:
+    enabled: false
+    
     
 zuul:
   routes:
     user:
       path: /user/**
       serviceId: pn-user
+      #省略服务名称路径前缀
+      strip-prefix: false
     goods:
       path: /goods/**
       serviceId: pn-goods
+      strip-prefix: false
