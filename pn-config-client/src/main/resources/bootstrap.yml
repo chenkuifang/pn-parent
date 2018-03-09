@@ -7,5 +7,6 @@ spring:
       #name: cloud-config
       profile: pro
       label: master
+      #对应config server文件名前缀如： client1-test.yml
   application:
     name: client1
