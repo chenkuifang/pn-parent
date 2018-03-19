@@ -17,6 +17,7 @@
 		<module>pn-hystrix-dashboard</module>
 		<module>pn-gateway-zuul</module>
 		<module>pn-config-server</module>
+		<module>pn-config-client</module>
 	</modules>
 
 	<name>pn-parent</name>
