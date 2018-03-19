@@ -26,6 +26,11 @@ zuul:
       serviceId: pn-user
       #省略服务名称路径前缀
       strip-prefix: false
+      #多实例配置
+      #ribbon.eureka.enabled=false
+      #pn-user-.ribbon.listOfServers=http://localhost:8080/,http://localhost:8081/
+
+
     goods:
       path: /goods/**
       serviceId: pn-goods
