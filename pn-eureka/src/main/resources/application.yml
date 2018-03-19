@@ -1,5 +1,8 @@
 server:
   port: 8761
+spring:
+  application:
+    name: pn-register-server
 
 eureka:
   instance:
@@ -9,3 +12,6 @@ eureka:
     fetchRegistry: false
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    #enable-self-preservation: false #关闭注册中心自我保护模式
+    eviction-interval-timer-in-ms: 30000 # 清理关闭服务间隔时间
