@@ -11,6 +11,7 @@ eureka:
     prefer-ip-address: true
     instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}} #默认端口不行
 
+
 spring:
   application:
     name: pn-user
@@ -44,3 +45,12 @@ logging:
         user:
           mapper: debug
 
+#需要未授权访问Acuator 端点
+management:
+  security:
+    enabled: false
+#    roles: ADMIN
+#security:
+#  user:
+#    name: admin
+#    password: 123456
