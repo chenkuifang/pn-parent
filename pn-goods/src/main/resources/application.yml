@@ -44,3 +44,13 @@ logging:
         goods:
           mapper: debug
 
+#需要未授权访问Acuator 端点
+management:
+  security:
+    enabled: false
+
+#security:
+#  user:
+#    name: admin
+#    password: 123456
+
