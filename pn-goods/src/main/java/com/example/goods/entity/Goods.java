@@ -21,6 +21,10 @@ public class Goods implements Serializable {
     private Integer stock;
     private Integer saleCount;
     private Integer status;
+    private Integer brandId;
+
+    /**品牌*/
+    private Brand brand;
 
     public Integer getId() {
         return id;
@@ -86,6 +90,22 @@ public class Goods implements Serializable {
         this.status = status;
     }
 
+    public Integer getBrandId() {
+        return brandId;
+    }
+
+    public void setBrandId(Integer brandId) {
+        this.brandId = brandId;
+    }
+
+    public Brand getBrand() {
+        return brand;
+    }
+
+    public void setBrand(Brand brand) {
+        this.brand = brand;
+    }
+
     @Override
     public String toString() {
         return "Goods{" +
@@ -97,6 +117,8 @@ public class Goods implements Serializable {
                 ", stock=" + stock +
                 ", saleCount=" + saleCount +
                 ", status=" + status +
+                ", brandId=" + brandId +
+                ", brand=" + brand +
                 '}';
     }
 }
