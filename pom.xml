@@ -18,6 +18,7 @@
 		<module>pn-gateway-zuul</module>
 		<module>pn-config-server</module>
 		<module>pn-config-client</module>
+		<module>pn-zipkin-server</module>
 	</modules>
 
 	<name>pn-parent</name>
