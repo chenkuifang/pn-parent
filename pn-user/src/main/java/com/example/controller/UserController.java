@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
 import java.util.List;
@@ -23,8 +24,13 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private RestTemplate restTemplate;
+
     @GetMapping("/{id}")
     public User get(@PathVariable("id") Integer id) {
+        String goods = restTemplate.getForObject("http://192.168.211.1:8082/goods/10001", String.class);
+        System.err.println("goods:" + goods);
         return userService.get(id);
     }
 

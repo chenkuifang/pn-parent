@@ -1,5 +1,5 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.mapper.OrderMapper">
+<mapper namespace="com.example.mapper.UserMapper">
 	<resultMap type="User" id="userMap">
 		<id property="id" column="id" jdbcType="NUMERIC"/>
 		<result property="userName" column="user_name" jdbcType="VARCHAR"/>
@@ -31,13 +31,7 @@
 	<select id="get" resultMap="userMap" parameterType="java.lang.Integer">
 		select
 			<include refid="columns" />
-			,b.user_name as create_name
-			/*,c.role_name*/
 		from pn_user a
-		left join pn_user b on a.create_id = b.id
-/*
-		left join pn_role c on a.role_id = c.role_id and c.status = 1
-*/
 		where a.id = #{id} and a.status &lt; 64
 	</select>
 	

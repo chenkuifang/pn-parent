@@ -4,7 +4,7 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://user:123456@localhost:8761/eureka/
     healthcheck:
           enabled: true
   instance:
@@ -13,14 +13,12 @@ eureka:
 
 
 spring:
-  application:
-    name: pn-user
     #mysql tomcat连接池
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/pn_user?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;autoReconnectForPools=true
     username: root
-    password: 123456
+    password: root
   couchbase:
     env:
       ssl:
@@ -32,7 +30,7 @@ spring:
 #mybatis.type-aliases-package=com.example.demo.entity
 mybatis:
   mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.example.user.entity
+  type-aliases-package: com.example.entity
 
 #---------------------日志设置--------------#
 #springboot 默认提供 logback日志框架
@@ -42,8 +40,7 @@ logging:
   level:
     com:
       example:
-        user:
-          mapper: debug
+        mapper: debug
 
 #需要未授权访问Acuator 端点
 management:
