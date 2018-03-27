@@ -9,9 +9,9 @@ import java.math.BigDecimal;
  * @author QuiFar
  * @version V1.0
  **/
-public class Goods implements Serializable {
+public class Goods extends User implements Serializable {
 
-    private static final long serialVersionUID = -8631597948477729776L;
+    private static final long serialVersionUID = -1L;
 
     private Integer id;
     private String goodsNum;
