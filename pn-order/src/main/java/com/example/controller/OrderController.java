@@ -1,6 +1,6 @@
 package com.example.controller;
 
-import com.example.entity.Order;
+import com.common.entity.Order;
 import com.example.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

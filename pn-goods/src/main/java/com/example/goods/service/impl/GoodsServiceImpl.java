@@ -1,6 +1,6 @@
 package com.example.goods.service.impl;
 
-import com.example.goods.entity.Goods;
+import com.common.entity.Goods;
 import com.example.goods.mapper.GoodsMapper;
 import com.example.goods.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;

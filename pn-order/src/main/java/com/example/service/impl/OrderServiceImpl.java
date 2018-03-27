@@ -1,6 +1,6 @@
 package com.example.service.impl;
 
-import com.example.entity.Order;
+import com.common.entity.Order;
 import com.example.mapper.OrderMapper;
 import com.example.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;

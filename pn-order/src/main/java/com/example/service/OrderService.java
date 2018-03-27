@@ -1,6 +1,6 @@
 package com.example.service;
 
-import com.example.entity.Order;
+import com.common.entity.Order;
 
 import java.util.List;
 import java.util.Map;

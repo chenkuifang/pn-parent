@@ -1,6 +1,6 @@
 package com.example.goods.mapper;
 
-import com.example.goods.entity.Goods;
+import com.common.entity.Goods;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

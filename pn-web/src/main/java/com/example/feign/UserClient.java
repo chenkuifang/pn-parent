@@ -1,12 +1,11 @@
 package com.example.feign;
 
+import com.common.entity.User;
 import com.example.feign.fallback.UserClientFallback;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import com.example.entity.User;
 
 /**
  * user 服务类

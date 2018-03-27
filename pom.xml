@@ -9,6 +9,7 @@
 	<packaging>pom</packaging>
 
 	<modules>
+		<module>pn-common</module>
 		<module>pn-eureka</module>
 		<module>pn-user</module>
 		<module>pn-goods</module>

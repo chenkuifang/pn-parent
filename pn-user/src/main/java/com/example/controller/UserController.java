@@ -1,6 +1,6 @@
 package com.example.controller;
 
-import com.example.entity.User;
+import com.common.entity.User;
 import com.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +29,7 @@ public class UserController {
 
     @GetMapping("/{id}")
     public User get(@PathVariable("id") Integer id) {
-        String goods = restTemplate.getForObject("http://192.168.211.1:8082/goods/10001", String.class);
+        String goods = restTemplate.getForObject("http://localhost:8082/goods/10001", String.class);
         System.err.println("goods:" + goods);
         return userService.get(id);
     }

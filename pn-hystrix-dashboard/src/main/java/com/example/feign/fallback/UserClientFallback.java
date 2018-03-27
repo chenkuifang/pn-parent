@@ -1,7 +1,7 @@
 package com.example.feign.fallback;
 
 
-import com.example.entity.User;
+import com.common.User;
 import com.example.feign.UserClient;
 import org.springframework.stereotype.Component;
 

@@ -1,6 +1,6 @@
 package com.example.mapper;
 
-import com.example.entity.User;
+import com.common.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -26,7 +26,7 @@ public interface UserMapper {
 	/**
 	 * 根据主键数据批量删除用户
 	 * 
-	 * @param id
+	 * @param ids
 	 *            主键
 	 * @return
 	 */
@@ -86,7 +86,7 @@ public interface UserMapper {
 	/**
 	 * 根据条件获取用户列表(分页)
 	 * 
-	 * @param 1.过滤条件、2.分页参数必须包含page,limit
+	 * @param params 1.过滤条件、2.分页参数必须包含page,limit
 	 * @return
 	 */
 	List<User> listPage(Map<String, Object> params);

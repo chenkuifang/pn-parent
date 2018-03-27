@@ -1,6 +1,6 @@
 package com.example.goods.service;
 
-import com.example.goods.entity.Goods;
+import com.common.entity.Goods;
 
 import java.util.List;
 import java.util.Map;
