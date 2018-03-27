@@ -1,4 +1,4 @@
-package com.example.entity;
+package com.common.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -25,8 +25,8 @@ public class Order implements Serializable {
     private String buyerAddress;
     private String buyerPhone;
     private Integer createId; /* 创建者 */
-    private java.util.Date createTime; /* 创建时间 */
-    private java.util.Date updateTime; /* 修改时间 */
+    private Date createTime; /* 创建时间 */
+    private Date updateTime; /* 修改时间 */
     private Integer status; /* 订单状态 0:未付款，1：已付款，2：已发货，3：已完成，4：取消订单 */
 
     // 创建者

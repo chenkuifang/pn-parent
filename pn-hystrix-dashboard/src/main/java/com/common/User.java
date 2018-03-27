@@ -1,4 +1,4 @@
-package com.example.entity;
+package com.common;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
