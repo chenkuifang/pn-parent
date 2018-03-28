@@ -3,10 +3,7 @@ package com.example.controller;
 import com.common.entity.User;
 import com.example.feign.UserClient;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 用户控制类
@@ -24,7 +21,14 @@ public class UserController {
 
     @GetMapping("/{id}")
     public User getUser(@PathVariable("id") Integer id) {
-        return userClient.getUser(id);
+        return userClient.get(id);
     }
 
+
+    @GetMapping("/getByName")
+    @ResponseBody
+    public User getByName(@RequestParam("userName") String userName) {
+        return userClient.getByName(userName);
+
+    }
 }

@@ -15,7 +15,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserClientFallback implements UserClient {
     @Override
-    public User getUser(Integer id) {
+    public User get(Integer id) {
+        User user = new User();
+        user.setId(0);
+        return user;
+    }
+
+    @Override
+    public User getByName(String userName) {
         User user = new User();
         user.setId(0);
         return user;
