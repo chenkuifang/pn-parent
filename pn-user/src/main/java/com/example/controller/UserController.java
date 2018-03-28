@@ -1,15 +1,11 @@
 package com.example.controller;
 
-import com.common.entity.Goods;
+import com.common.bean.JsonResult;
 import com.common.entity.User;
-import com.example.feign.GoodsClient;
+import com.common.util.JsonResultUtils;
 import com.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -27,21 +23,49 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private GoodsClient goodsClient;
-
+    /**
+     * 根据Id获取单个User对象
+     *
+     * @param id 编码
+     * @return
+     */
     @GetMapping("/{id}")
-    public Map<String, Object> get(@PathVariable("id") Integer id) {
-        Map<String, Object> result = new HashMap<>();
-        Goods goods = goodsClient.get(10001);
-
-        result.put("user",userService.get(id));
-        result.put("goods",goods);
-        return result;
+    public User get(@PathVariable("id") Integer id) {
+        return userService.get(id);
     }
 
+    /**
+     * 通过用户名获取User对象
+     *
+     * @param userName 名称
+     * @return
+     */
+    @GetMapping("/getByName")
+    public User getByName(@RequestParam("userName") String userName) {
+        return userService.getByUserName(userName);
+    }
+
+    /**
+     * 获取所有用户列表
+     *
+     * @return
+     */
+    @GetMapping("/list")
     public List<User> list() {
         return userService.list(new HashMap<>());
+    }
+
+    /**
+     * 根据条件获取列表
+     *
+     * @param params 页面请求参数
+     * @return
+     */
+    @GetMapping("/listPage")
+    public JsonResult listPage(@RequestParam Map<String, Object> params) {
+        List<User> list = userService.listPage(params);
+        int countPage = userService.countPage(params);
+        return JsonResultUtils.jsonPageResult(list, countPage);
     }
 }
 

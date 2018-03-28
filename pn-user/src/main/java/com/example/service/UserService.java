@@ -85,7 +85,7 @@ public interface UserService {
 	/**
 	 * 根据条件获取用户列表(分页)
 	 * 
-	 * @param 1.过滤条件、2.分页参数必须包含page,limit
+	 * @param params 1.过滤条件、2.分页参数必须包含page,limit
 	 * @return
 	 */
 	List<User> listPage(Map<String, Object> params);
