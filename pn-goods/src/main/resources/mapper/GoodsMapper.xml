@@ -2,6 +2,7 @@
 <mapper namespace="com.example.goods.mapper.GoodsMapper">
 	<resultMap type="Goods" id="goodsMap">
 		<id property="id" column="id" jdbcType="NUMERIC"/>
+		<id property="brandId" column="brand_id" jdbcType="NUMERIC"/>
 		<result property="goodsNum" column="goods_num" jdbcType="VARCHAR"/>
 		<result property="goodsName" column="goods_name" jdbcType="VARCHAR"/>
 		<result property="salePrice" column="sale_price" jdbcType="NUMERIC"/>
@@ -9,17 +10,27 @@
 		<result property="stock" column="stock" jdbcType="NUMERIC"/>
 		<result property="saleCount" column="sale_count" jdbcType="NUMERIC"/>
 		<result property="status" column="status" jdbcType="NUMERIC"/>
+
+		<association property="brand" javaType="Brand">
+			<id property="brandId" column="brand_id" jdbcType="NUMERIC"/>
+			<result property="brandName" column="brand_name" jdbcType="VARCHAR"/>
+			<result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+			<result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+			<result property="status" column="status" jdbcType="NUMERIC"/>
+		</association>
 	</resultMap>
 
 	<sql id="columns">
-		a.id,a.goods_num,a.goods_name,a.sale_price,
+		a.id,a.brand_id,a.goods_num,a.goods_name,a.sale_price,
 		a.discount_price,a.stock,a.sale_count,a.status
 	</sql>
 
 	<select id="get" resultMap="goodsMap" parameterType="java.lang.Integer">
 		select
 			<include refid="columns" />
+			,b.brand_name,b.create_time,b.update_time,b.status
 		from pn_goods a
+		left join pn_brand b on a.brand_id = b.brand_id and b.status = 1
 		where a.id = #{id} and a.status &lt; 64
 	</select>
 

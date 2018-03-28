@@ -1,6 +1,5 @@
 package com.example.goods.controller;
 
-import com.alibaba.fastjson.JSONObject;
 import com.common.entity.Goods;
 import com.example.goods.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +32,7 @@ public class GoodsController {
      */
     @GetMapping("/{id}")
     public Goods get(@PathVariable("id") Integer id) {
-        Goods goods = goodsService.get(id);
-        System.err.println(JSONObject.toJSONString(goods));
-        return goods;
+        return goodsService.get(id);
     }
 
     /**

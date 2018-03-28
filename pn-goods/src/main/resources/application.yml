@@ -14,7 +14,7 @@ eureka:
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/pn_goods?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;autoReconnectForPools=true
+    url: jdbc:mysql://localhost:3306/db_goods?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;autoReconnectForPools=true
     username: root
     password: root
   couchbase:
