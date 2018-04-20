@@ -4,7 +4,7 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://user:123456@localhost:8761/eureka/
     healthcheck:
           enabled: true
   instance:
@@ -16,10 +16,33 @@ spring:
     name: pn-order
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/pn_order?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;autoReconnectForPools=true
+    url: jdbc:mysql://localhost:3306/db_order?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;autoReconnectForPools=true
     username: root
     password: 123456
   couchbase:
     env:
       ssl:
         enabled: false
+
+#resource目录下的mapper包下的所有xml文件
+#mybatis.mapper-locations=classpath:mapper/*.xml
+#指定实体包下的类别名
+#mybatis.type-aliases-package=com.example.demo.entity
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.common.entity
+
+#---------------------日志设置--------------#
+#springboot 默认提供 logback日志框架
+#mybatis sql语句打印
+#logging.level.com.example.demo.mapper=debug
+logging:
+  level:
+    com:
+      example:
+        mapper: debug
+
+#需要未授权访问Acuator 端点
+management:
+  security:
+    enabled: false

@@ -18,7 +18,7 @@ public class IndexController {
 
     @GetMapping("/index")
     public String index() {
-        return "hello user";
+        return "hello order";
     }
 
     @GetMapping("/get-services")
