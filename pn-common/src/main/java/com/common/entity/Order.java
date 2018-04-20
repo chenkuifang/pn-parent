@@ -1,6 +1,7 @@
 
 package com.common.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -30,7 +31,9 @@ public class Order implements Serializable {
 	private String buyerAddress; /* 收货地址 */
 	private String buyerPhone; /* 手机 */
 	private Integer createId; /* 订单创建账号ID */
+	@JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
 	private java.util.Date createTime; /* 订单创建时间 */
+	@JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
 	private java.util.Date updateTime; /* 订单最后修改时间 */
 	private Integer status; /* 订单状态 0:未付款，1：已付款，2：已发货，3：已完成，4：取消订单 */
 }

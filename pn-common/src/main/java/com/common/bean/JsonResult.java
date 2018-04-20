@@ -73,9 +73,6 @@ public final class JsonResult implements Serializable {
         } else {
             list.clear();
         }
-//		resultBean.setode("");
-//		resultBean.setMsg("");
-//		resultBean.setCount(0);
         resultBean.setData(list);
     }
 

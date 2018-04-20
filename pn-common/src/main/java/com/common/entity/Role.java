@@ -1,5 +1,6 @@
 package com.common.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -31,6 +32,7 @@ public class Role implements Serializable {
 	/** 创建时间 */
 	private Date createTime;
 	/** 最后更改 */
+	@JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date updateTime;
 	/** 状态 0：停用，1：使用中 */
 	private Integer status;

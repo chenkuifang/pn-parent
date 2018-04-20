@@ -1,6 +1,7 @@
 
 package com.common.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -28,7 +29,9 @@ public class Menu implements Serializable {
 	private Integer type; /* 类型 0：目录 1：菜单 2：按钮 */
 	private String icon; /* 菜单图标 */
 	private Integer orderNum; /* 排序 */
+	@JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date createTime; /* 创建时间 */
+	@JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date updateTime; /* 修改时间 */
 	private Integer status; /* 状态 1：正常，0：暂停 */
 
