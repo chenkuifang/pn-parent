@@ -2,6 +2,7 @@ package com.example.gateway.filters;
 
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,8 +14,8 @@ import javax.servlet.http.HttpServletResponse;
  * @author QuiFar
  * @version V1.0
  **/
+@Slf4j
 public class ErrorFilter extends ZuulFilter {
-    Logger log = LoggerFactory.getLogger(ErrorFilter.class);
 
     /**
      * filterType 值：
@@ -59,6 +60,7 @@ public class ErrorFilter extends ZuulFilter {
      */
     @Override
     public Object run() {
+        log.info("异常拦截器");
         RequestContext ctx = RequestContext.getCurrentContext();
         Throwable throwable = ctx.getThrowable();
         log.error("this is a ErrorFilter : {}", throwable.getCause().getMessage());

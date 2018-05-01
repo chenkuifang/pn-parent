@@ -1,5 +1,8 @@
 package com.example.gateway;
 
+import com.example.gateway.filters.ErrorFilter;
+import com.example.gateway.filters.PostFilter;
+import com.example.gateway.filters.RoteFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
@@ -31,8 +34,26 @@ public class GatewayApplication {
         SpringApplication.run(GatewayApplication.class, args);
     }
 
+    // 注册Bean
     @Bean
     PreZuulFilter preZuulFilter() {
         return new PreZuulFilter();
     }
+
+    @Bean
+    RoteFilter roteFilter() {
+        return new RoteFilter();
+    }
+
+    @Bean
+    PostFilter postFilter() {
+        return new PostFilter();
+    }
+
+    @Bean
+    ErrorFilter errorFilter() {
+        return new ErrorFilter();
+    }
+
+
 }
