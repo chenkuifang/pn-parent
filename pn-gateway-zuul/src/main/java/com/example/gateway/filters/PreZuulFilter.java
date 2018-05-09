@@ -2,9 +2,7 @@ package com.example.gateway.filters;
 
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
-import com.netflix.zuul.exception.ZuulException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,47 +14,8 @@ import javax.servlet.http.HttpServletResponse;
  * @author QuiFar
  * @version V1.0
  */
+@Slf4j
 public class PreZuulFilter extends ZuulFilter {
-
-    private static final Logger logger = LoggerFactory.getLogger(PreZuulFilter.class);
-
-    @Override
-    public boolean shouldFilter() {
-        return true;
-    }
-
-    @Override
-    public Object run() {
-        //logger.info("zuul过滤器执行了");
-
-        RequestContext context = RequestContext.getCurrentContext();
-        HttpServletRequest request = context.getRequest();
-        String token = request.getParameter("token");
-
-        try {
-            doSomething();
-        } catch (Exception e) {
-            System.err.println("catch exception");
-            //context.setSendZuulResponse(false);
-            context.set("error.message", e.getMessage());
-            context.set("error.status_code", HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            context.set("error.exception", e.getCause());
-        }
-
-//        //http://172.16.171.96:8085/user/10001?token=token
-//        if (!"token".equals(token)) {
-//            context.setSendZuulResponse(false);
-//            context.setResponseStatusCode(401);
-//            context.setResponseBody("auth fail");
-//            return null;
-//        }
-        logger.info("请求成功");
-        return null;
-    }
-
-    private void doSomething() {
-        throw new RuntimeException("Exist some errors...");
-    }
 
     @Override
     public String filterType() {
@@ -67,6 +26,42 @@ public class PreZuulFilter extends ZuulFilter {
     @Override
     public int filterOrder() {
         return 0;
+    }
+
+    @Override
+    public boolean shouldFilter() {
+        return true;
+    }
+
+    @Override
+    public Object run() {
+        RequestContext context = RequestContext.getCurrentContext();
+        HttpServletRequest request = context.getRequest();
+        String token = request.getParameter("token");
+
+        //try {
+        doSomething();
+//        } catch (Exception e) {
+//            //context.setSendZuulResponse(false);
+//            context.set("error.message", e.getMessage());
+//            context.set("error.status_code", HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+//            context.set("error.exception", e.getCause());
+//        }
+
+//        //http://172.16.171.96:8085/user/10001?token=token
+//        if (!"token".equals(token)) {
+//            context.setSendZuulResponse(false);
+//            context.setResponseStatusCode(401);
+//            context.setResponseBody("auth fail");
+//            return null;
+//        }
+        log.info("进入preFilter");
+        return null;
+    }
+
+    private void doSomething() {
+        log.info("进入 doSomeThing method");
+        throw new RuntimeException("Exist some errors...");
     }
 
 }

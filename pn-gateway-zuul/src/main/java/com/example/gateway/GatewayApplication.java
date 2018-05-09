@@ -1,5 +1,8 @@
 package com.example.gateway;
 
+import com.example.gateway.filters.ErrorFilter;
+import com.example.gateway.filters.PostFilter;
+import com.example.gateway.filters.RoteFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
@@ -8,7 +11,7 @@ import org.springframework.context.annotation.Bean;
 import com.example.gateway.filters.PreZuulFilter;
 
 /**
- * API网关，所有请求都经过该服务，由它来反向代理请求后端的服务
+ * API网关，所有请求都经过该服务，由它来反向代理请求后端的服务(作用：实现请求校验、服务聚合等功能)
  * <p>
  * 1.例如：http://localhost:8085/user/user/10001;请求user 就会反向代理到pn-user后端服务
  * <p>
@@ -31,8 +34,26 @@ public class GatewayApplication {
         SpringApplication.run(GatewayApplication.class, args);
     }
 
+    // 注册Bean
     @Bean
     PreZuulFilter preZuulFilter() {
         return new PreZuulFilter();
     }
+
+    @Bean
+    RoteFilter roteFilter() {
+        return new RoteFilter();
+    }
+
+    @Bean
+    PostFilter postFilter() {
+        return new PostFilter();
+    }
+
+    @Bean
+    ErrorFilter errorFilter() {
+        return new ErrorFilter();
+    }
+
+
 }
