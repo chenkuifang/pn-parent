@@ -27,7 +27,7 @@ public final class JsonResult implements Serializable {
     /**
      * 编码
      */
-    private String code;
+    private Integer code;
     /**
      * 消息
      */

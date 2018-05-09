@@ -30,4 +30,69 @@
         from pn_order a
         where a.order_id = #{id} and a.status &lt; 64
     </select>
+
+    <select id="getNewOrderSid" resultType="java.lang.String">
+        select
+        order_sid
+        from pn_order
+        order by create_time desc
+        limit 1
+    </select>
+
+    <insert id="add" parameterType="Order">
+        insert into pn_order
+        (
+            order_sid,pay_sid,pay_way,pay_time
+            ,goods_num,goods_name,price,pay_price,amount
+            ,buyer_name,buyer_address,buyer_phone,create_id,create_time
+            ,update_time,status
+        )
+        values
+        (
+            #{orderSid,jdbcType=VARCHAR},#{paySid,jdbcType=VARCHAR},
+            #{payWay,jdbcType=NUMERIC},#{payTime,jdbcType=TIMESTAMP},#{goodsNum,jdbcType=VARCHAR},
+            #{goodsName,jdbcType=VARCHAR}, #{price,jdbcType=NUMERIC}, #{payPrice,jdbcType=NUMERIC},
+            #{amount,jdbcType=NUMERIC}, #{buyerName,jdbcType=VARCHAR}, #{buyerAddress,jdbcType=VARCHAR},
+            #{buyerPhone,jdbcType=VARCHAR}, #{createId,jdbcType=NUMERIC}, #{createTime,jdbcType=TIMESTAMP},
+            #{updateTime,jdbcType=TIMESTAMP}, #{status,jdbcType=NUMERIC}
+        )
+    </insert>
+
+    <update id="update" parameterType="Order">
+        update pn_order
+        <trim prefix="set" suffixOverrides=",">
+            <if test="goodsNum!=null">
+                goods_num=#{goodsNum,jdbcType=VARCHAR},
+            </if>
+            <if test="goodsName!=null">
+                goods_name=#{goodsName,jdbcType=VARCHAR},
+            </if>
+            <if test="price!=null">
+                price=#{price,jdbcType=NUMERIC},
+            </if>
+            <if test="payPrice!=null">
+                pay_price=#{payPrice,jdbcType=NUMERIC},
+            </if>
+            <if test="amount!=null">
+                amount=#{amount,jdbcType=NUMERIC},
+            </if>
+            <if test="buyerName!=null">
+                buyer_name=#{buyerName,jdbcType=VARCHAR},
+            </if>
+            <if test="buyerAddress!=null">
+                buyer_address=#{buyerAddress,jdbcType=VARCHAR},
+            </if>
+            <if test="buyerPhone!=null">
+                buyer_phone=#{buyerPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="updateTime!=null">
+                update_time=#{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="status!=null">
+                status=#{status,jdbcType=NUMERIC},
+            </if>
+        </trim>
+        where
+        order_id=#{orderId}
+    </update>
 </mapper>

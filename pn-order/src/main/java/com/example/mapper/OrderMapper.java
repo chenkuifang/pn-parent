@@ -55,6 +55,13 @@ public interface OrderMapper {
     Order get(Integer id);
 
     /**
+     * 创建订单SID
+     *
+     * @return
+     */
+    String getNewOrderSid();
+
+    /**
      * 根据条件获取列表
      *
      * @param params

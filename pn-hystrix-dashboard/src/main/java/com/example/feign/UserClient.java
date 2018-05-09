@@ -11,7 +11,6 @@ import com.example.feign.fallback.UserClientFallback;
 @FeignClient(name = "pn-user", fallback = UserClientFallback.class)
 public interface UserClient {
 
-    //@GetMapping("/get-user/{id}")
     @RequestMapping(value = "/get-user/{id}", method = RequestMethod.GET)
     User getUser(@PathVariable("id") Integer id);
 }

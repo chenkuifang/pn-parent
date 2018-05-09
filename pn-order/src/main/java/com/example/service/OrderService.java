@@ -53,6 +53,13 @@ public interface OrderService {
 	Order get(Integer id);
 
 	/**
+	 * 创建订单SID
+	 *
+	 * @return
+	 */
+	String getNewOrderSid() throws Exception;
+
+	/**
 	 * 根据条件获取列表
 	 *
 	 * @param params
