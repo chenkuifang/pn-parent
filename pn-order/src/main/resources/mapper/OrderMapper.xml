@@ -6,7 +6,7 @@
         <result property="paySid" column="pay_sid" jdbcType="VARCHAR"/>
         <result property="payWay" column="pay_way" jdbcType="NUMERIC"/>
         <result property="payTime" column="pay_time" jdbcType="TIMESTAMP"/>
-        <result property="goodsNum" column="goods_num" jdbcType="VARCHAR"/>
+        <result property="goodsId" column="goods_id" jdbcType="NUMERIC"/>
         <result property="goodsName" column="goods_name" jdbcType="VARCHAR"/>
         <result property="price" column="price" jdbcType="NUMERIC"/>
         <result property="payPrice" column="pay_price" jdbcType="NUMERIC"/>
@@ -20,7 +20,7 @@
         <result property="status" column="status" jdbcType="NUMERIC"/>
     </resultMap>
     <sql id="columns">a.order_id,a.order_sid,a.pay_sid,a.pay_way
-		,a.pay_time,a.goods_num,a.goods_name,a.price,a.pay_price,a.amount,a.buyer_name,a.buyer_address
+		,a.pay_time,a.goods_id,a.goods_name,a.price,a.pay_price,a.amount,a.buyer_name,a.buyer_address
 		,a.buyer_phone,a.create_id,a.create_time,a.update_time,a.status
 	</sql>
 
@@ -43,14 +43,14 @@
         insert into pn_order
         (
             order_sid,pay_sid,pay_way,pay_time
-            ,goods_num,goods_name,price,pay_price,amount
+            ,goods_id,goods_name,price,pay_price,amount
             ,buyer_name,buyer_address,buyer_phone,create_id,create_time
             ,update_time,status
         )
         values
         (
             #{orderSid,jdbcType=VARCHAR},#{paySid,jdbcType=VARCHAR},
-            #{payWay,jdbcType=NUMERIC},#{payTime,jdbcType=TIMESTAMP},#{goodsNum,jdbcType=VARCHAR},
+            #{payWay,jdbcType=NUMERIC},#{payTime,jdbcType=TIMESTAMP},#{goodsId,jdbcType=VARCHAR},
             #{goodsName,jdbcType=VARCHAR}, #{price,jdbcType=NUMERIC}, #{payPrice,jdbcType=NUMERIC},
             #{amount,jdbcType=NUMERIC}, #{buyerName,jdbcType=VARCHAR}, #{buyerAddress,jdbcType=VARCHAR},
             #{buyerPhone,jdbcType=VARCHAR}, #{createId,jdbcType=NUMERIC}, #{createTime,jdbcType=TIMESTAMP},
@@ -61,8 +61,8 @@
     <update id="update" parameterType="Order">
         update pn_order
         <trim prefix="set" suffixOverrides=",">
-            <if test="goodsNum!=null">
-                goods_num=#{goodsNum,jdbcType=VARCHAR},
+            <if test="goodsId!=null">
+                goods_id=#{goodsId,jdbcType=VARCHAR},
             </if>
             <if test="goodsName!=null">
                 goods_name=#{goodsName,jdbcType=VARCHAR},

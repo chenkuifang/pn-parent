@@ -27,7 +27,7 @@ public class Order implements Serializable {
     private Integer payWay;
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     private Date payTime;
-    private String goodsNum; /* 商品编码 */
+    private Integer goodsId; /* 商品编码 */
     private String goodsName; /* 商品名称 */
     private BigDecimal price; /* 拍下价格 */
     private BigDecimal payPrice; /* 支付价格 */

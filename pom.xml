@@ -20,6 +20,7 @@
 		<module>pn-config-server</module>
 		<module>pn-config-client</module>
 		<module>pn-zipkin-server</module>
+		<module>pn-mq-server</module>
 	</modules>
 
 	<name>pn-parent</name>
