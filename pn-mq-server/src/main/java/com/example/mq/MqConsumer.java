@@ -1,4 +1,4 @@
-package com.example.order;
+package com.example.mq;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.core.annotation.Order;

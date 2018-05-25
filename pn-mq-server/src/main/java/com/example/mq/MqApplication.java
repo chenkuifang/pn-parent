@@ -1,4 +1,4 @@
-package com.example.order;
+package com.example.mq;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
