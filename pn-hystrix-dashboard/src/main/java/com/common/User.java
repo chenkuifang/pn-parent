@@ -1,5 +1,6 @@
 package com.common;
 
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.Serializable;
@@ -11,6 +12,7 @@ import java.io.Serializable;
  * @date 2017年11月11日 下午12:21:01
  */
 @Slf4j
+@Data
 public class User implements Serializable {
 
     private static final long serialVersionUID = -7846848632214306244L;

@@ -98,6 +98,13 @@
 		where id=#{id}
 	</update>
 
+	<update id="updateStockAndSaleCount">
+		update pn_goods set
+		stock = stock - #{saleAmount,jdbcType=NUMERIC}
+		,sale_count = sale_count - #{saleAmount,jdbcType=NUMERIC}
+		where id=#{goodsId}
+	</update>
+
 	<delete id="remove" parameterType="java.lang.Integer">
 		update pn_goods set status = status + 64 where id = #{id}
 	</delete>

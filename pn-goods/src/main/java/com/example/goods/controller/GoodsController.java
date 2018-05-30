@@ -2,6 +2,7 @@ package com.example.goods.controller;
 
 import com.common.entity.Goods;
 import com.example.goods.service.GoodsService;
+import com.example.mq.service.MqProducer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +24,7 @@ public class GoodsController {
 
     @Autowired
     private GoodsService goodsService;
+
 
     /**
      * 获取单个商品

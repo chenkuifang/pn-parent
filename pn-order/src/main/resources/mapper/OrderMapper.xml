@@ -31,6 +31,13 @@
         where a.order_id = #{id} and a.status &lt; 64
     </select>
 
+    <select id="list" resultMap="dataMap">
+        select
+        <include refid="columns"/>
+        from pn_order a
+        order by order_id
+    </select>
+
     <select id="getNewOrderSid" resultType="java.lang.String">
         select
         order_sid

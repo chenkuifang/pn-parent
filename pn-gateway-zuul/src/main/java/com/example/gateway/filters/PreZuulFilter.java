@@ -40,7 +40,7 @@ public class PreZuulFilter extends ZuulFilter {
         String token = request.getParameter("token");
 
         //try {
-        doSomething();
+        //doSomething();
 //        } catch (Exception e) {
 //            //context.setSendZuulResponse(false);
 //            context.set("error.message", e.getMessage());

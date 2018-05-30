@@ -1,5 +1,6 @@
-package com.example.mq;
+package com.example.mq.service;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
@@ -12,6 +13,7 @@ import org.springframework.util.concurrent.ListenableFutureCallback;
  * @version V1.0
  **/
 @Component
+@Slf4j
 public class MqProducer {
 
     @Autowired
@@ -26,6 +28,7 @@ public class MqProducer {
      */
     public void send(String topic, Object msg) {
 
+        log.info(">>>>>>>>>>--------------发送消息开始-------------------->>>>>>");
         ListenableFuture<SendResult<String, Object>> send = kafkaTemplate.send(topic, msg);
 
         send.addCallback(new ListenableFutureCallback<SendResult<String, Object>>() {
@@ -42,5 +45,25 @@ public class MqProducer {
                 System.err.println("发送消息失败:" + ex.getMessage());
             }
         });
+    }
+
+    /**
+     * 创建订单是发送mq消息
+     * topic=createOrder
+     *
+     * @param msg 消息
+     */
+    public void sendMq4CreateOder(String msg) {
+        this.send("createOrder", msg);
+    }
+
+    /**
+     * 更新商品销量和库存是发送mq消息
+     * topic=handleGoodsStockAndSaleCount
+     *
+     * @param msg 消息
+     */
+    public void sendMq4GoodsStockAndSaleCount(String msg) {
+        this.send("handleGoodsStockAndSaleCount", msg);
     }
 }

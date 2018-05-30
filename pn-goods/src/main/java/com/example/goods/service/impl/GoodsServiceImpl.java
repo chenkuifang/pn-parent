@@ -47,6 +47,11 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
+    public int update(Integer goodsId, Integer saleAmount) {
+        return goodsMapper.updateStockAndSaleCount(goodsId, saleAmount);
+    }
+
+    @Override
     public List<Goods> list(Map<String, Object> params) {
         return goodsMapper.list(params);
     }

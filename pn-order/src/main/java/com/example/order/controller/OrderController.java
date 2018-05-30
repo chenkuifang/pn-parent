@@ -1,8 +1,9 @@
 package com.example.order.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.common.constant.Constants;
 import com.common.entity.Order;
-import com.example.mq.MqProducer;
+import com.example.mq.service.MqProducer;
 import com.example.order.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,6 +66,21 @@ public class OrderController {
         return orderService.add(order);
     }
 
+    /**
+     * 发送消息
+     */
+    @GetMapping("/send-msg")
+    public void sendMsgToMq() {
+        log.info("发送MQ消息测试开始-------------->>>>>");
+        mqProducer.send("test", "hello world mq");
+    }
+
+    /**
+     * 增加一个订单
+     *
+     * @param userId  订单创建者
+     * @param goodsId 商品id
+     */
     @GetMapping("add-order/{userId}/{goodsId}")
     public void addOrder(@PathVariable("userId") Integer userId, @PathVariable("goodsId") Integer goodsId) {
 
@@ -88,16 +104,16 @@ public class OrderController {
         order.setCreateId(userId);
         order.setCreateTime(new Date());
         order.setStatus(0);
-        /*int flag = orderService.add(order);
+        int flag = orderService.add(order);
 
         if (flag == 0) {
             return;
-        }*/
+        }
 
         // 发送MQ
-        mqProducer.send("createOrder", order);
+        mqProducer.sendMq4CreateOder(JSONObject.toJSONString(order));
 
-
+        // 最终监听 商品和用户修改好的topic
     }
 
 }

@@ -20,7 +20,7 @@ spring:
 server:
   port: 8086
 
-#--------------注册到Eureka
+#----------------------------------注册到Eureka-------------------------------#
 eureka:
   client:
     serviceUrl:
@@ -29,4 +29,4 @@ eureka:
           enabled: true
   instance:
     prefer-ip-address: true
-    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}} #默认端口不行
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}

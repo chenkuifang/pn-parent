@@ -1,4 +1,4 @@
-package com.example.mq;
+package com.example.mq.service;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.core.annotation.Order;
@@ -44,18 +44,18 @@ public class MqConsumer {
      * @param ack  通知回调，消费完成，提交offset
      */
     @KafkaListener(topics = {"test", "test2"})
-    public void processMessage(ConsumerRecord<?, ?> data, Acknowledgment ack) {
+    public void processMessage(ConsumerRecord<?, ?> data) {
         System.err.println("接收到信息： " + data.value());
 
         // 手动提交offset, 需要配置 ack-mode: manual_immediate
-        ack.acknowledge();
+        //ack.acknowledge();
 
         // stop
         latch.countDown();
     }
 
-    @KafkaListener(topics = {"createOrder"})
+    /*@KafkaListener(topics = {"createOrder"})
     public void processOrderMsg(ConsumerRecord<?, Order> data) {
         System.err.println("接受到订单消息:" + data.toString());
-    }
+    }*/
 }

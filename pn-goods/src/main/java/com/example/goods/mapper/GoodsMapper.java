@@ -2,6 +2,7 @@ package com.example.goods.mapper;
 
 import com.common.entity.Goods;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -54,6 +55,15 @@ public interface GoodsMapper {
      * @return
      */
     Integer update(Goods goods);
+
+    /**
+     * 根据商品编码 修改库存和销量
+     *
+     * @param goodsId    商品编码
+     * @param saleAmount 销量
+     * @return
+     */
+    int updateStockAndSaleCount(@Param("goodsId") Integer goodsId, @Param("saleAmount") Integer saleAmount);
 
     /**
      * 根据条件获取列表

@@ -54,6 +54,15 @@ public interface GoodsService {
     int update(Goods goods);
 
     /**
+     * 根据商品编码 修改库存和销量
+     *
+     * @param goodsId   商品编码
+     * @param saleAmount 销量
+     * @return
+     */
+    int update(Integer goodsId, Integer saleAmount);
+
+    /**
      * 根据条件获取列表
      *
      * @param params
