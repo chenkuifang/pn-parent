@@ -1,8 +1,8 @@
-package com.example.feign.fallback;
+package com.example.user.feign.fallback;
 
 
 import com.common.entity.Goods;
-import com.example.feign.GoodsClient;
+import com.example.user.feign.GoodsClient;
 import org.springframework.stereotype.Component;
 
 /**

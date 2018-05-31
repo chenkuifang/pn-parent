@@ -1,9 +1,11 @@
-package com.example.controller;
+package com.example.user.controller;
 
 import com.common.bean.JsonResult;
 import com.common.entity.User;
 import com.common.util.JsonResultUtils;
-import com.example.service.UserService;
+import com.example.mq.service.MqProducer;
+import com.example.user.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,9 +21,13 @@ import java.util.Map;
  **/
 @RestController
 @RequestMapping("/user")
+@Slf4j
 public class UserController {
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private MqProducer mqProducer;
 
     /**
      * 根据Id获取单个User对象
@@ -66,6 +72,13 @@ public class UserController {
         List<User> list = userService.listPage(params);
         int countPage = userService.countPage(params);
         return JsonResultUtils.jsonPageResult(list, countPage);
+    }
+
+    @GetMapping("/send-msg")
+    public String sendMsg() {
+        log.info("user service send a msg test");
+        mqProducer.send("test4", "user service send a msg test");
+        return "ok";
     }
 }
 

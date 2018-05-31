@@ -1,7 +1,7 @@
-package com.example.feign;
+package com.example.user.feign;
 
 import com.common.entity.Goods;
-import com.example.feign.fallback.GoodsClientFallback;
+import com.example.user.feign.fallback.GoodsClientFallback;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
