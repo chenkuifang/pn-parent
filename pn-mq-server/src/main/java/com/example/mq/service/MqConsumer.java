@@ -1,12 +1,10 @@
 package com.example.mq.service;
 
-import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.springframework.core.annotation.Order;
-import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.kafka.support.Acknowledgment;
-import org.springframework.stereotype.Component;
-
 import java.util.concurrent.CountDownLatch;
+
+import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.stereotype.Component;
 
 /**
  * 接收消息可通过配置MessageListenerContainer bean 或使用注解@KafkaListener
@@ -51,7 +49,7 @@ public class MqConsumer {
         //ack.acknowledge();
 
         // stop
-        latch.countDown();
+        //latch.countDown();
     }
 
     /*@KafkaListener(topics = {"createOrder"})

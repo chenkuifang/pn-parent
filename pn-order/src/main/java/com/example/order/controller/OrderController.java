@@ -70,9 +70,10 @@ public class OrderController {
      * 发送消息
      */
     @GetMapping("/send-msg")
-    public void sendMsgToMq() {
+    public String sendMsgToMq() {
         log.info("发送MQ消息测试开始-------------->>>>>");
         mqProducer.send("test", "hello world mq");
+        return "ok";
     }
 
     /**

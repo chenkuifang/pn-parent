@@ -49,7 +49,7 @@ public class LoginController {
     public JsonResult loginPost(HttpServletRequest request, @RequestParam("userName") String userName,
                                 @RequestParam("password") final String password) {
 
-        String code = Constants.FAIL_CODE;
+        Integer code = Constants.FAIL_CODE;
         String msg = Constants.USER_NAME_OR_PASSWORD_ERROR;
         User user = userClient.getByName(userName);
 
