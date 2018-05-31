@@ -16,17 +16,18 @@
 	</parent>
 
 	<dependencies>
-		<dependency>
-			<groupId>com.example</groupId>
-			<artifactId>pn-common</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+		<!--公共依赖 -->
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>pn-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
 
-		<dependency>
-			<groupId>com.example</groupId>
-			<artifactId>pn-mq-server</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>pn-mq-server</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -62,6 +63,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-actuator</artifactId>
 		</dependency>
+		
+		<dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
 	</dependencies>
 
 	<build>

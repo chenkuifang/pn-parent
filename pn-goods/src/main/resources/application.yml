@@ -6,7 +6,7 @@ eureka:
     serviceUrl:
       defaultZone: http://user:123456@localhost:8761/eureka/
     healthcheck:
-          enabled: true
+      enabled: true
   instance:
     prefer-ip-address: true
     instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}} #默认端口不行
@@ -24,25 +24,21 @@ spring:
   zipkin:
     base-url: http://localhost:9411
 
-#-----------------------kafka config------------------------------------#
+  ####################### kafka config #########################
   kafka:
-      producer:
-        retries: 0
-        batch-size: 16384
-        buffer-memory: 33554432
-        key-serializer: org.apache.kafka.common.serialization.StringSerializer
-        value-serializer: org.apache.kafka.common.serialization.StringSerializer
-        bootstrap-servers: 10.80.1.110:9092
-      consumer:
-        bootstrap-servers: 10.80.1.110:9092
-        group-id: test #消费群
-        auto-offset-reset: earliest
-        enable-auto-commit: false #非自动提交offset
-        auto-commit-interval: 100
-        key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-        value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      listener:
-              ack-mode: manual_immediate
+    producer:
+      retries: 0
+      batch-size: 16384
+      buffer-memory: 33554432
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      bootstrap-servers: 10.80.1.110:9092
+    consumer:
+      bootstrap-servers: 10.80.1.110:9092
+      group-id: test #消费群
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
 #resource目录下的mapper包下的所有xml文件
 #mybatis.mapper-locations=classpath:mapper/*.xml
 #指定实体包下的类别名

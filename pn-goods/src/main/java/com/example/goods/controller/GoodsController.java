@@ -3,6 +3,7 @@ package com.example.goods.controller;
 import com.common.entity.Goods;
 import com.example.goods.service.GoodsService;
 import com.example.mq.service.MqProducer;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,11 +21,14 @@ import java.util.List;
  **/
 @RestController
 @RequestMapping("/goods")
+@Slf4j
 public class GoodsController {
 
     @Autowired
     private GoodsService goodsService;
 
+    @Autowired
+    private MqProducer mqProducer;
 
     /**
      * 获取单个商品
@@ -45,6 +49,12 @@ public class GoodsController {
     @RequestMapping("/list")
     public List<Goods> list() {
         return goodsService.list(new HashMap<>());
+    }
+
+    @GetMapping("/send-msg")
+    public void sendMsg() {
+        log.info("发送消息------>>>>");
+        //mqProducer.send("test", "goods send a msg test");
     }
 
 }
