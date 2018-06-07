@@ -39,3 +39,17 @@ CREATE TABLE `pn_brand` (
 ) ENGINE=InnoDB AUTO_INCREMENT=10001 DEFAULT CHARSET=utf8 COMMENT='商品品牌信息表';
 
 INSERT INTO pn_brand VALUES (10001,'苹果','2018-03-28 09:52:34','2018-03-28 09:52:34',1);
+
+-- -----------------------------------------------
+-- 商品库存平衡表
+-- -----------------------------------------------
+DROP TABLE IF EXISTS `pn_goods_store_balance`;
+CREATE TABLE `pn_goods_store_balance` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `goods_id` bigint(20)  NOT NULL COMMENT '商品编码',
+  `in_count` bigint(20) COMMENT '进库数量',
+  `out_count` bigint(20) COMMENT '出库数量',
+  `create_time` datetime COMMENT '创建时间',
+  `create_user` bigint(20) COMMENT '创建用户',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10001 DEFAULT CHARSET=utf8 COMMENT='商品库存平衡表';

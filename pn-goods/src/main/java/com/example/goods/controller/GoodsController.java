@@ -54,7 +54,7 @@ public class GoodsController {
     @GetMapping("/send-msg")
     public void sendMsg() {
         log.info("发送消息------>>>>");
-        //mqProducer.send("test", "goods send a msg test");
+        mqProducer.send("test", "goods send a msg test");
     }
 
 }
