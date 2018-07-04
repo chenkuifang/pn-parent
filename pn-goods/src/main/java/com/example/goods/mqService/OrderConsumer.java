@@ -29,12 +29,14 @@ public class OrderConsumer {
         System.err.println("接受到订单消息:" + order.get("goodsName"));
 
         // 操作库存
+        int orderId = order.getInteger("orderId");
         int goodsId = order.getInteger("goodsId");
         int amount = order.getInteger("amount");
         int flag = goodsService.update(goodsId, amount);
 
         // 确保最终一致
         JSONObject msg = new JSONObject();
+        msg.put("orderId", orderId);
         msg.put("goodsId", goodsId);
         msg.put("result", "1");
         if (flag <= 0) {
