@@ -20,7 +20,8 @@ public class GlobalException implements HandlerExceptionResolver {
     private static final Logger logger = LoggerFactory.getLogger(GlobalException.class);
 
     @Override
-    public ModelAndView resolveException(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) {
+    public ModelAndView resolveException(HttpServletRequest httpServletRequest
+            , HttpServletResponse httpServletResponse, Object o, Exception e) {
         logger.info("进入cart 全局异常处理器！");
 
         //控制台打印异常
