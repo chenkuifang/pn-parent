@@ -57,7 +57,8 @@ logging:
   level:
     com:
       example:
-        mapper: debug
+        user:
+          mapper: debug
 
 #需要未授权访问Acuator 端点
 management:

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 /**
- * user 服务类
+ * goods API 调用
  *
  * @author QuiFar
  */
