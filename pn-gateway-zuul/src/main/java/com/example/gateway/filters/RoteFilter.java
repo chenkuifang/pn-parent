@@ -3,13 +3,17 @@ package com.example.gateway.filters;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 /**
  * 路由过滤器
+ * zuul 生命周期：http request-->pre filters-->routing filters-->post filters
+ * 出现问题都会走 error filters
  *
  * @author QuiFar
  */
 @Slf4j
+@Component
 public class RoteFilter extends ZuulFilter {
     @Override
     public String filterType() {

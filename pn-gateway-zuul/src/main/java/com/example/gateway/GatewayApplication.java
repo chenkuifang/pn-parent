@@ -1,14 +1,8 @@
 package com.example.gateway;
 
-import com.example.gateway.filters.ErrorFilter;
-import com.example.gateway.filters.PostFilter;
-import com.example.gateway.filters.RoteFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
-import org.springframework.context.annotation.Bean;
-
-import com.example.gateway.filters.PreZuulFilter;
 
 /**
  * API网关，所有请求都经过该服务，由它来反向代理请求后端的服务(作用：实现请求校验、服务聚合等功能)
@@ -20,6 +14,8 @@ import com.example.gateway.filters.PreZuulFilter;
  * ，否则出现401；当然也可以直接引入spring security;
  * <p>
  * 2.在实际使用中我们可以结合shiro、oauth2.0等技术去做鉴权、验证。
+ * <p>
+ * 3.API Gateway经常通过调用多个微服务来处理一个请求以及聚合多个服务的结果。(如查看用户的订单详情：包含order、user、goods服务)
  *
  * @author QuiFar
  * @version V1.0
@@ -33,27 +29,4 @@ public class GatewayApplication {
     public static void main(String[] args) {
         SpringApplication.run(GatewayApplication.class, args);
     }
-
-    // 注册Bean
-    @Bean
-    PreZuulFilter preZuulFilter() {
-        return new PreZuulFilter();
-    }
-
-    @Bean
-    RoteFilter roteFilter() {
-        return new RoteFilter();
-    }
-
-    @Bean
-    PostFilter postFilter() {
-        return new PostFilter();
-    }
-
-    @Bean
-    ErrorFilter errorFilter() {
-        return new ErrorFilter();
-    }
-
-
 }

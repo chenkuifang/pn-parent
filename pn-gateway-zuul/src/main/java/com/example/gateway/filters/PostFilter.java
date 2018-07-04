@@ -3,6 +3,7 @@ package com.example.gateway.filters;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.UUID;
@@ -13,6 +14,7 @@ import java.util.UUID;
  * @author QuiFar
  */
 @Slf4j
+@Component
 public class PostFilter extends ZuulFilter {
     @Override
     public String filterType() {
