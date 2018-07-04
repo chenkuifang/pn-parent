@@ -21,43 +21,48 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class OrderServiceImpl implements OrderService {
 
     @Autowired
-    private OrderMapper userMapper;
+    private OrderMapper orderMapper;
 
     @Override
     public Integer remove(Integer id) {
         // 1.判断是否有删除的权限
         // 2.操作删除
-        return userMapper.remove(id);
+        return orderMapper.remove(id);
     }
 
     @Override
     public Integer removeBatch(String[] ids) {
-        return userMapper.removeBatch(ids);
+        return orderMapper.removeBatch(ids);
     }
 
     @Override
     public Integer update(Order user) {
-        return userMapper.update(user);
+        return orderMapper.update(user);
+    }
+
+    @Override
+    public Integer updateStatus(Integer orderId, Integer status) {
+        return orderMapper.updateStatus(orderId, status);
     }
 
     @Override
     public Integer add(Order user) {
-        return userMapper.add(user);
+        return orderMapper.add(user);
     }
 
     @Override
     public List<Order> list(Map<String, Object> params) {
-        return userMapper.list(params);
+        return orderMapper.list(params);
     }
 
     @Override
     public Order get(Integer id) {
-        return userMapper.get(id);
+        return orderMapper.get(id);
     }
 
     @Override
     public String getNewOrderSid() throws Exception {
-        String orderSid = userMapper.getNewOrderSid();
+        String orderSid = orderMapper.getNewOrderSid();
         String prefix = StringUtils.getOrderSidPrefix();
         if (StringUtils.isEmpty(orderSid)) {
             return prefix + 100001;
@@ -74,12 +79,12 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<Order> listPage(Map<String, Object> params) {
-        return userMapper.listPage(params);
+        return orderMapper.listPage(params);
     }
 
     @Override
     public Integer countPage(Map<String, Object> params) {
-        return userMapper.countPage(params);
+        return orderMapper.countPage(params);
     }
 
 }

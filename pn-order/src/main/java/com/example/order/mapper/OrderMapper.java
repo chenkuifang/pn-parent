@@ -2,6 +2,7 @@ package com.example.order.mapper;
 
 import com.common.entity.Order;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -37,6 +38,15 @@ public interface OrderMapper {
      * @return
      */
     Integer update(Order order);
+
+    /**
+     * 根据订单ID修改状态
+     *
+     * @param orderId 订单Id
+     * @param status  需要修改的状态
+     * @return
+     */
+    Integer updateStatus(@Param("orderId") Integer orderId, @Param("status") Integer status);
 
     /**
      * 新增

@@ -2,6 +2,7 @@ package com.example.order.mqService;
 
 import com.alibaba.fastjson.JSONObject;
 import com.example.mq.service.MqProducer;
+import com.example.order.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,9 @@ public class GoodsConsumer {
     @Autowired
     private MqProducer mqProducer;
 
+    @Autowired
+    private OrderService orderService;
+
     /**
      * 获取商品服务的确认信息
      *
@@ -33,13 +37,15 @@ public class GoodsConsumer {
 
         // 确认是否扣减库存成功
         Integer goodsId = goodsAckMsg.getInteger("goodsId");
+        Integer orderId = goodsAckMsg.getInteger("orderId");
         Integer result = goodsAckMsg.getInteger("result");
 
         if (result == 1) {
             log.info("商品微服务操作库存成功！");
         } else {
             log.info("商品微服务操作库存失败！");
-            // 进行重试
+            // 进行修改订单为关闭状态
+            orderService.updateStatus(orderId, 4);
         }
     }
 }
