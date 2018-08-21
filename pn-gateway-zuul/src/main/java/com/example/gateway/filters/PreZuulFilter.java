@@ -3,10 +3,10 @@ package com.example.gateway.filters;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * Zuul前置过滤器，作用：签名校验、权限校验、请求限流等功能
@@ -22,7 +22,8 @@ public class PreZuulFilter extends ZuulFilter {
     @Override
     public String filterType() {
         //pre、route、post
-        return "pre";
+
+        return FilterConstants.PRE_TYPE;
     }
 
     @Override

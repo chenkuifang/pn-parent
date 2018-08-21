@@ -3,6 +3,7 @@ package com.example.gateway.filters;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
 import org.springframework.stereotype.Component;
 
 /**
@@ -17,7 +18,7 @@ import org.springframework.stereotype.Component;
 public class RoteFilter extends ZuulFilter {
     @Override
     public String filterType() {
-        return "rote";
+        return FilterConstants.ROUTE_TYPE;
     }
 
     @Override
