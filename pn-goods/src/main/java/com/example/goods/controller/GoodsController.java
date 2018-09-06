@@ -1,6 +1,8 @@
 package com.example.goods.controller;
 
 import com.common.entity.Goods;
+import com.common.entity.User;
+import com.example.goods.feign.UserClient;
 import com.example.goods.service.GoodsService;
 import com.example.mq.service.MqProducer;
 import lombok.extern.slf4j.Slf4j;
@@ -30,6 +32,9 @@ public class GoodsController {
     @Autowired
     private MqProducer mqProducer;
 
+    @Autowired
+    private UserClient userClient;
+
     /**
      * 获取单个商品
      *
@@ -55,6 +60,12 @@ public class GoodsController {
     public void sendMsg() {
         log.info("发送消息------>>>>");
         mqProducer.send("test", "goods send a msg test");
+    }
+
+    @GetMapping("/user")
+    public String getUser() {
+        User user = userClient.getUser(10001);
+        return user.toString();
     }
 
 }

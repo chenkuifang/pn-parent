@@ -68,3 +68,8 @@ management:
 #    name: admin
 #    password: 123456
 
+#feign hystrix设置
+feign:
+  hystrix:
+    enabled: true
+
